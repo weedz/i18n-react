@@ -1,8 +1,8 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useState } from "react";
 import { subscribe, unsubscribe } from "./connect.js";
 import { strings } from "./utils.js";
 
-export function useLanguage() {
+export function useTranslations() {
     const [t, setStrings] = useState<Readonly<typeof strings>>(strings);
 
     useEffect(() => {

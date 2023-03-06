@@ -1,7 +1,7 @@
 {
-  "name": "@weedzcokie/i18n-preact",
-  "version": "3.0.0-alpha.19",
-  "description": "Small internationalization library for use with preact",
+  "name": "@weedzcokie/i18n-react",
+  "version": "1.0.0-alpha.1",
+  "description": "Small internationalization library for use with react",
   "source": "src/index.ts",
   "type": "module",
   "main": "dist/index.js",
@@ -21,29 +21,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/weedz/preact-i18n.git"
+    "url": "git+https://github.com/weedz/i18n-react.git"
   },
   "keywords": [
-    "preact",
+    "react",
     "i18n",
     "internationalization"
   ],
   "author": "Linus Björklund",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/weedz/preact-i18n/issues"
+    "url": "https://github.com/weedz/i18n-react/issues"
   },
-  "homepage": "https://github.com/weedz/preact-i18n#readme",
+  "homepage": "https://github.com/weedz/i18n-react#readme",
   "devDependencies": {
+    "@types/react": "^18.0.28",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.31.8",
-    "preact": "^10.10.6",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "react": "^18.2.0",
     "typescript": "^4.8.3"
   },
   "peerDependencies": {
-    "preact": "^10.5.5"
+    "react": "^18.2.0"
   }
 }

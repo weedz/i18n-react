@@ -1,4 +1,4 @@
-import type { FunctionalComponent } from "preact";
+import type { FunctionComponent } from "react";
 
 export const strings: StringValue = {};
 const rootLocales: RootLocales = {};
@@ -11,7 +11,7 @@ type StringFunction = {
 type Strings = () => Array<StringValue | Promise<{default: StringValue} | StringValue>>;
 
 export type StringValue = {
-    [key: string]: string | StringFunction | FunctionalComponent<unknown>
+    [key: string]: string | StringFunction | FunctionComponent<unknown>
 };
 export type Locales = {
     [locale: string]: Strings

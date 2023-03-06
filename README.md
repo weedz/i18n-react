@@ -1,6 +1,6 @@
-# preact-i18n
+# i18n-react
 
-[![npm](https://img.shields.io/npm/v/@weedzcokie/i18n-preact?style=flat-square)](https://www.npmjs.com/package/@weedzcokie/i18n-preact)
+[![npm](https://img.shields.io/npm/v/@weedzcokie/i18n-react?style=flat-square)](https://www.npmjs.com/package/@weedzcokie/i18n-react)
 
 ## Example
 
@@ -20,7 +20,7 @@ export default {
 }
 
 // App.jsx
-import { withLanguage, storeLocale, changeLanguage } from "@weedzcokie/i18n-preact";
+import { withLanguage, storeLocale, changeLanguage } from "@weedzcokie/i18n-react";
 
 storeLocale({
     "en": () => [import("./en.js")],
@@ -59,18 +59,18 @@ export default withLanguage(App);
 }
 ```
 
-`@types/@weedzcokie/i18n-preact.d.ts`:
+`@types/@weedzcokie/i18n-react.d.ts`:
 ```typescript
 import { locales } from "src/i18n";
 import ns1 from "src/i18n/en";
-declare module "@weedzcokie/i18n-preact" {
+declare module "@weedzcokie/i18n-react" {
     type AllLocales = typeof locales;
     type StringValues = typeof ns1;
 
     type AllStrings = {
         [K in keyof StringValues]: StringValues[K];
     };
-    // Extend interfaces from `@weedzcokie/i18n-preact` with the actual values used
+    // Extend interfaces from `@weedzcokie/i18n-react` with the actual values used
     interface StringValue extends AllStrings {}
     interface Locales extends AllLocales {}
 }
@@ -90,7 +90,7 @@ export default {
 } as typeof import("./en").default; // To make sure all strings are the correct type according to the "en" locale
 
 // src/i18n/index.ts
-import { storeLocale } from "@weedzcokie/i18n-preact";
+import { storeLocale } from "@weedzcokie/i18n-react";
 
 export const locales = {
     "en": () => [import("./en")],
@@ -103,61 +103,7 @@ export const locales = {
 storeLocale(locales);
 
 // src/App.tsx
-import { changeLanguage, withLanguage } from "@weedzcokie/i18n-preact";
-import "src/i18n"; // initialize locale store
-
-function App(props: LanguageProps) {
-    return (
-        <div>
-            <input onclick={() => changeLanguage("sv")} value="Change language" />
-            <p>{this.props.t("string-id")}</p>
-            <p>{this.props.t("string-param")("Hello World!")}</p>
-        </div>
-    );
-}
-
-export default withLanguage(App);
-```
-
-#### `preact-router`
-
-With `preact-router` we can to declare "routable" components as:
-```tsx
-// src/About.tsx
-import type { LanguageProps } from "@weedzcokie/i18n-preact";
-import { RoutableProps } from "preact-router";
-import withLanguage from "../i18n";
-
-type Props = RoutableProps & LanguageProps & {
-    msg: string
-};
-
-function About(props: Props) {
-    return (
-        <div>
-            <h1>About</h1>
-            <p>{props.msg}</p>
-            <p>{props.t("string-id")}</p>
-        </div>
-    );
-}
-
-export default withLanguage(About);
-
-// src/App.tsx
-import { Route, Router } from "preact-router";
-// ...
-<Router>
-    <About path="/about" msg="Test props" />
-    { /* or as a `Route` */}
-    <Route component={About} path="/about" msg="Test props" />
-</Router>
-```
-
-### Hook
-
-```typescript
-import { useLanguage } from "@weedzcokie/i18n-preact";
+import { useTranslations, changeLanguage } from "@weedzcokie/i18n-react";
 import "src/i18n"; // initialize locale store
 
 type Props = {
@@ -165,12 +111,13 @@ type Props = {
 };
 
 function About(props: Props) {
-    const t = useLanguage();
+    const t = useTranslations();
     return (
         <div>
             <h1>About</h1>
             <p>{props.msg}</p>
             <p>{t["string-id"]}</p>
+            <input onclick={() => changeLanguage("sv")} value="Change language" />
         </div>
     );
 }

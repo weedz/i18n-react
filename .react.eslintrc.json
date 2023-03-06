@@ -5,9 +5,15 @@
 	],
 
 	"plugins": [
-		"react"
-		// "react-hooks"
+		"react",
+		"react-hooks"
 	],
+
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
 
 	"env": {
 		"browser": true,
@@ -21,18 +27,9 @@
 		"global": true
 	},
 
-	"settings": {
-		"react": {
-			// eslint-plugin-preact interprets this as "h.createElement",
-			// however we only care about marking h() as being a used variable.
-			"pragma": "h",
-			"version": "18"
-		}
-	},
-
 	"rules": {
 		/**
-		 * Preact / JSX rules
+		 * JSX rules
 		 */
 		"react/no-deprecated": 2,
 		"react/react-in-jsx-scope": 0, // handled this automatically
@@ -55,7 +52,6 @@
 		"react/prefer-stateless-function": 1,
 		"react/require-render-return": 2,
 		"react/no-danger": 1,
-		// Legacy APIs not supported in Preact:
 		"react/no-did-mount-set-state": 2,
 		"react/no-did-update-set-state": 2,
 		"react/no-find-dom-node": 2,
